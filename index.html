@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>UTN IMPRENTA GRUPO Nº8</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>UTN IMPRENTA GRUPO Nº8</h1>
+<p>ILUMINACIÓN AMBIENTE LABORAL</p>
+
+<div class="form-container">
+  <form id="luxForm">
+    <fieldset class="fieldset-group">
+      <legend>🏢 Datos de la Empresa</legend>
+      <div class="horizontal-group">
+        <div class="form-group"><label>Razón Social:</label><input type="text" id="razon"></div>
+        <div class="form-group"><label>Dirección:</label><input type="text" id="direccion"></div>
+        <div class="form-group"><label>Localidad:</label><input type="text" id="localidad"></div>
+        <div class="form-group"><label>Provincia:</label><input type="text" id="provincia"></div>
+        <div class="form-group"><label>CUIT:</label><input type="text" id="cuit"></div>
+      </div>
+    </fieldset>
+
+    <fieldset class="fieldset-group">
+      <legend>🛠️ Datos Técnicos</legend>
+      <div class="horizontal-group">
+        <div class="form-group"><label>Nombre del Sector:</label><input type="text" id="sector"></div>
+        <div class="form-group">
+          <label>Tipo de Tarea:</label>
+          <select id="tarea">
+            <option value="">Seleccione una tarea</option>
+            <option value="Oficina administrativa">Oficina administrativa</option>
+            <option value="Depósito">Depósito</option>
+            <option value="Taller de precisión">Taller de precisión</option>
+            <option value="Pasillo o circulación">Pasillo o circulación</option>
+            <option value="Área de carga y descarga">Área de carga y descarga</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Nivel mínimo de Lux requerido:</label><input type="number" id="luxMin"></div>
+      </div>
+
+      <div class="horizontal-group">
+        <div class="form-group"><label>Medición Lux 1:</label><input type="number" id="luxMed1"></div>
+        <div class="form-group"><label>Medición Lux 2:</label><input type="number" id="luxMed2"></div>
+        <div class="form-group"><label>Medición Lux 3:</label><input type="number" id="luxMed3"></div>
+      </div>
+
+      <div class="horizontal-group">
+        <div class="form-group"><label>Promedio de Lux:</label><input type="text" id="promedio" readonly></div>
+        <div class="form-group"><label>Resultado:</label><div id="resultadoLux"></div></div>
+      </div>
+
+      <div class="form-group"><label>Observaciones:</label><textarea id="observaciones" rows="6"></textarea></div>
+      <div class="form-group"><label>Responsable Técnico:</label><input type="text" id="responsable"></div>
+    </fieldset>
+
+    <div class="form-group buttons">
+      <button onclick="guardarDatos()" type="button" class="pdf-button">💾 Guardar</button>
+      <button onclick="window.print()" type="button" class="pdf-button">🖨️ Imprimir</button>
+    </div>
+  </form>
+</div>
+
+<div id="mensajeGuardado">✔️ Guardado correctamente</div>
+
+<div class="historial-container">
+  <h2 class="section-title">📋 Historial de Mediciones</h2>
+  <table id="tablaHistorial">
+    <thead>
+      <tr><th>Fecha</th><th>Sector</th><th>Tarea</th><th>Promedio</th><th>Resultado</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
