@@ -1,70 +1,178 @@
-const tareasLux = {
-  'Oficina administrativa': 300,
-  'Depósito': 100,
-  'Taller de precisión': 750,
-  'Pasillo o circulación': 100,
-  'Área de carga y descarga': 150
-};
-
-function setLuxMinimo() {
-  const tarea = document.getElementById('tarea').value;
-  const input = document.getElementById('luxMin');
-  if (tareasLux[tarea]) input.value = tareasLux[tarea];
-  calcularPromedio();
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7fafd;
+  color: #333;
+  padding: 20px;
+  margin: 0;
 }
 
-function calcularPromedio() {
-  const m1 = parseFloat(document.getElementById('luxMed1').value) || 0;
-  const m2 = parseFloat(document.getElementById('luxMed2').value) || 0;
-  const m3 = parseFloat(document.getElementById('luxMed3').value) || 0;
-  const promedio = ((m1 + m2 + m3) / 3).toFixed(2);
-  document.getElementById('promedio').value = promedio;
+h1 {
+  text-align: center;
+  font-size: 2em;
+  color: #1a3c5a;
+  margin-bottom: 0;
+}
 
-  const min = parseFloat(document.getElementById('luxMin').value) || 0;
-  const resultado = document.getElementById('resultadoLux');
+p {
+  text-align: center;
+  font-size: 1.1em;
+  color: #5b6e7d;
+  margin-top: 4px;
+  margin-bottom: 30px;
+}
 
-  if (!isNaN(promedio) && promedio > 0) {
-    resultado.textContent = promedio >= min ? 'CUMPLE' : 'NO CUMPLE';
-    resultado.className = promedio >= min ? 'cumple' : 'nocumple';
-  } else {
-    resultado.textContent = '';
-    resultado.className = '';
+.form-container {
+  max-width: 1100px;
+  margin: auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  page-break-inside: avoid;
+}
+
+.horizontal-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  flex: 1 1 200px;
+  min-width: 200px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px;
+  background: linear-gradient(145deg, #ffffff, #dceeff);
+  border: 1px solid #a5c9ea;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.08), -2px -2px 6px rgba(255, 255, 255, 0.6);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #aacbe1;
+  border-radius: 6px;
+  background-color: #f0f6ff;
+  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.05);
+  font-size: 14px;
+}
+
+textarea#observaciones {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.fieldset-group {
+  margin-bottom: 30px;
+  border: 2px solid #b5d2e8;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f0f8ff;
+  box-shadow: 0 0 10px rgba(106, 140, 175, 0.1);
+  page-break-inside: avoid;
+}
+
+.fieldset-group legend {
+  font-weight: bold;
+  padding: 6px 12px;
+  font-size: 1.1em;
+  color: #ffffff;
+  background-color: #6a8caf;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pdf-button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #6a8caf;
+  color: white;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.pdf-button:hover {
+  transform: scale(1.05);
+}
+
+.section-title {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.3em;
+  color: #375877;
+}
+
+.historial-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+#mensajeGuardado {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+#resultadoLux {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  padding: 8px 0;
+}
+
+#resultadoLux.cumple {
+  color: green;
+}
+
+#resultadoLux.nocumple {
+  color: red;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  h1, p, .form-container, .form-container * {
+    visibility: visible;
+  }
+  h1, p {
+    display: block;
+    position: relative;
+    page-break-before: auto;
+  }
+  .form-container {
+    position: relative;
+    width: 100%;
+    padding: 20mm;
+    background-color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    box-shadow: none;
+  }
+  .historial-container,
+  .pdf-button,
+  #mensajeGuardado {
+    display: none !important;
   }
 }
-
-function guardarDatos() {
-  const fecha = new Date().toISOString().split('T')[0];
-  const sector = document.getElementById('sector').value;
-  const tarea = document.getElementById('tarea').value;
-  const promedio = document.getElementById('promedio').value;
-  const resultado = document.getElementById('resultadoLux').textContent;
-
-  const historial = JSON.parse(localStorage.getItem('historialLux')) || [];
-  historial.push({ fecha, sector, tarea, promedio, cumple: resultado });
-  localStorage.setItem('historialLux', JSON.stringify(historial));
-  mostrarHistorial();
-
-  const msg = document.getElementById('mensajeGuardado');
-  msg.style.display = 'block';
-  setTimeout(() => msg.style.display = 'none', 2500);
-}
-
-function mostrarHistorial() {
-  const tabla = document.querySelector('#tablaHistorial tbody');
-  if (!tabla) return;
-  tabla.innerHTML = '';
-  const datos = JSON.parse(localStorage.getItem('historialLux')) || [];
-  datos.slice().reverse().forEach(d => {
-    const row = document.createElement('tr');
-    row.innerHTML = `<td>${d.fecha}</td><td>${d.sector}</td><td>${d.tarea}</td><td>${d.promedio}</td><td>${d.cumple}</td>`;
-    tabla.appendChild(row);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('tarea').addEventListener('change', setLuxMinimo);
-  ['luxMed1', 'luxMed2', 'luxMed3', 'luxMin'].forEach(id => {
-    document.getElementById(id).addEventListener('input', calcularPromedio);
-  });
-  mostrarHistorial();
-});
