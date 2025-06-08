@@ -1,3 +1,4 @@
+/* === DISEÑO PANTALLA NORMAL (tu diseño original) === */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f7fafd;
@@ -19,6 +20,22 @@ p {
   color: #5b6e7d;
   margin-top: 4px;
   margin-bottom: 30px;
+}
+
+.encabezado-informe h1 {
+  margin-bottom: 5px;
+}
+
+.encabezado-informe h2 {
+  text-align: center;
+  font-size: 1.4em;
+  color: #1a3c5a;
+  margin-bottom: 10px;
+}
+
+.encabezado-informe p {
+  font-size: 1em;
+  margin-bottom: 20px;
 }
 
 .form-container {
@@ -149,30 +166,47 @@ textarea#observaciones {
   color: red;
 }
 
+/* Pie de página */
+.pie-pagina {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 20px;
+  color: #555;
+  border-top: 1px solid #999;
+  padding-top: 5px;
+}
+
+/* === IMPRESIÓN PROFESIONAL === */
 @media print {
+  body {
+    margin: 20mm;
+    background-color: white;
+  }
+
   body * {
     visibility: hidden;
   }
-  h1, p, .form-container, .form-container * {
+
+  /* Mostrar encabezado */
+  .encabezado-informe,
+  .encabezado-informe * {
     visibility: visible;
-  }
-  h1, p {
-    display: block;
-    position: relative;
-    page-break-before: auto;
-  }
-  .form-container {
     position: relative;
     width: 100%;
-    padding: 20mm;
-    background-color: white !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-    box-shadow: none;
+    text-align: center;
+    margin-bottom: 20px;
   }
+
+  /* Mostrar solo el fieldset Datos Empresa */
+  #luxForm fieldset:first-of-type,
+  #luxForm fieldset:first-of-type * {
+    visibility: visible;
+    position: relative;
+    width: 100%;
+  }
+
+  /* Historial de Mediciones */
   .historial-container,
-  .pdf-button,
-  #mensajeGuardado {
-    display: none !important;
-  }
-}
+  .historial-container * {
+    visibility: visible;
+    position: relative;
