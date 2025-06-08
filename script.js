@@ -1,9 +1,10 @@
 const tareasLux = {
   'Oficina administrativa': 300,
-  'Depósito': 100,
-  'Taller de precisión': 750,
-  'Pasillo o circulación': 100,
-  'Área de carga y descarga': 150
+  'Comedor y Cocina': 200,
+  'Producción': 300,
+  'Baño': 100,
+  'Depósito y Producción': 300
+  'Depósito y Despacho': 150
 };
 
 function setLuxMinimo() {
