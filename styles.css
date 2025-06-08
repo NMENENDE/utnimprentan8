@@ -211,4 +211,20 @@ table th {
   .fieldset-group, #mensajeGuardado {
     display: none !important;
   }
+  /* === BOTÓN ELIMINAR === */
+.btn-eliminar {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-eliminar:hover {
+  background-color: #c9302c;
+  transform: scale(1.05);
+}
 }
