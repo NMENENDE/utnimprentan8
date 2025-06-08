@@ -1,7 +1,7 @@
-/* === DISEÑO PANTALLA NORMAL (tu diseño original) === */
+/* === FUENTES Y COLORES === */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f7fafd;
+  background-color: #fff;
   color: #333;
   padding: 20px;
   margin: 0;
@@ -9,43 +9,63 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 2em;
+  font-size: 2.2em;
   color: #1a3c5a;
-  margin-bottom: 0;
+  margin: 10px 0 5px 0;
 }
 
-p {
+h2 {
   text-align: center;
-  font-size: 1.1em;
-  color: #5b6e7d;
-  margin-top: 4px;
-  margin-bottom: 30px;
+  font-size: 1.5em;
+  color: #1a3c5a;
+  margin: 5px 0 15px 0;
 }
 
-.encabezado-informe h1 {
+.encabezado-sub {
+  text-align: center;
+  font-size: 1em;
+  color: #375877;
+  font-weight: bold;
   margin-bottom: 5px;
 }
 
-.encabezado-informe h2 {
-  text-align: center;
-  font-size: 1.4em;
-  color: #1a3c5a;
-  margin-bottom: 10px;
-}
-
 .encabezado-informe p {
+  text-align: center;
   font-size: 1em;
   margin-bottom: 20px;
+  color: #333;
 }
 
+.seccion-titulo {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #1a3c5a;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #1a3c5a;
+  padding-bottom: 5px;
+}
+
+/* === CUADROS === */
+.cuadro {
+  border: 1px solid #1a3c5a;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  background-color: #f7fafd;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+}
+
+.cuadro p {
+  margin: 8px 0;
+  font-size: 1em;
+}
+
+/* === FORMULARIO === */
 .form-container {
   max-width: 1100px;
   margin: auto;
-  background-color: #ffffff;
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  page-break-inside: avoid;
 }
 
 .horizontal-group {
@@ -63,11 +83,6 @@ p {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 15px;
-  background: linear-gradient(145deg, #ffffff, #dceeff);
-  border: 1px solid #a5c9ea;
-  border-radius: 10px;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.08), -2px -2px 6px rgba(255, 255, 255, 0.6);
 }
 
 .form-group input,
@@ -77,7 +92,6 @@ p {
   border: 1px solid #aacbe1;
   border-radius: 6px;
   background-color: #f0f6ff;
-  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.05);
   font-size: 14px;
 }
 
@@ -92,30 +106,27 @@ textarea#observaciones {
   border-radius: 10px;
   padding: 20px;
   background-color: #f0f8ff;
-  box-shadow: 0 0 10px rgba(106, 140, 175, 0.1);
-  page-break-inside: avoid;
 }
 
 .fieldset-group legend {
   font-weight: bold;
-  padding: 6px 12px;
   font-size: 1.1em;
   color: #ffffff;
-  background-color: #6a8caf;
+  background-color: #1a3c5a;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 5px 10px;
 }
 
+/* === BOTONES === */
 .pdf-button {
   margin: 10px;
   padding: 10px 20px;
   font-size: 14px;
   border: none;
   border-radius: 6px;
-  background-color: #6a8caf;
+  background-color: #1a3c5a;
   color: white;
   cursor: pointer;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
   transition: transform 0.2s;
 }
 
@@ -123,60 +134,54 @@ textarea#observaciones {
   transform: scale(1.05);
 }
 
-.section-title {
-  text-align: center;
-  margin-top: 50px;
-  font-size: 1.3em;
-  color: #375877;
-}
-
+/* === HISTORIAL === */
 .historial-container {
   max-width: 1100px;
-  margin: 40px auto;
-  text-align: center;
+  margin: 20px auto 40px auto;
 }
 
-#mensajeGuardado {
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-  padding: 10px 20px;
-  border-radius: 8px;
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
   font-size: 14px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-#resultadoLux {
-  font-weight: bold;
-  font-size: 16px;
+table th, table td {
+  border: 1px solid #1a3c5a;
+  padding: 8px;
   text-align: center;
-  padding: 8px 0;
 }
 
-#resultadoLux.cumple {
-  color: green;
+table th {
+  background-color: #e8f0fa;
+  color: #1a3c5a;
 }
 
-#resultadoLux.nocumple {
-  color: red;
+/* === RESPONSABLE TÉCNICO PIE === */
+.responsable-tecnico-print {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 16px;
+  color: #1a3c5a;
 }
 
-/* Pie de página */
+.responsable-tecnico-print h2 {
+  margin-bottom: 10px;
+}
+
+/* === PIE DE PÁGINA === */
 .pie-pagina {
   text-align: center;
   font-size: 12px;
-  margin-top: 20px;
   color: #555;
   border-top: 1px solid #999;
   padding-top: 5px;
+  margin-top: 30px;
+  padding-bottom: 10px;
 }
 
-/* === IMPRESIÓN PROFESIONAL === */
+/* === MEDIA PRINT PRO === */
 @media print {
   body {
     margin: 20mm;
@@ -187,26 +192,23 @@ textarea#observaciones {
     visibility: hidden;
   }
 
-  /* Mostrar encabezado */
-  .encabezado-informe,
-  .encabezado-informe * {
-    visibility: visible;
-    position: relative;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  /* Mostrar solo el fieldset Datos Empresa */
-  #luxForm fieldset:first-of-type,
-  #luxForm fieldset:first-of-type * {
+  .encabezado-informe, .encabezado-informe * {
     visibility: visible;
     position: relative;
     width: 100%;
   }
 
-  /* Historial de Mediciones */
-  .historial-container,
-  .historial-container * {
+  .seccion-titulo, .cuadro, .cuadro *, 
+  .historial-container, .historial-container *,
+  .responsable-tecnico-print, .responsable-tecnico-print *,
+  .pie-pagina {
     visibility: visible;
     position: relative;
+    width: 100%;
+  }
+
+  .buttons, .pdf-button,
+  .fieldset-group, #mensajeGuardado {
+    display: none !important;
+  }
+}
