@@ -10,7 +10,11 @@ const tareasLux = {
 function setLuxMinimo() {
   const tarea = document.getElementById('tarea').value;
   const input = document.getElementById('luxMin');
-  if (tareasLux[tarea]) input.value = tareasLux[tarea];
+  if (tareasLux[tarea]) {
+    input.value = tareasLux[tarea];
+  } else {
+    input.value = '';
+  }
   calcularPromedio();
 }
 
@@ -19,9 +23,13 @@ function generarCamposMedicion() {
   const contenedor = document.getElementById('medicionesContainer');
   contenedor.innerHTML = '';
 
-  if (!area || area <= 0) return;
+  if (!area || area <= 0) {
+    alert('Por favor ingrese un valor válido para el área (m²).');
+    return;
+  }
 
   const cantidad = Math.round(Math.sqrt(area));
+
   for (let i = 1; i <= cantidad; i++) {
     const grupo = document.createElement('div');
     grupo.className = 'form-group';
@@ -109,7 +117,6 @@ function mostrarHistorial() {
     tabla.appendChild(row);
   });
 
-  // Listeners botones eliminar
   const botonesEliminar = tabla.querySelectorAll('.btn-eliminar');
   botonesEliminar.forEach(btn => {
     btn.addEventListener('click', function() {
