@@ -2,24 +2,35 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>UTN IMPRENTA GRUPO Nº8</title>
+  <title>UTN e-Learning - IMPRENTA GRUPO Nº8 - Informe de Iluminación</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<!-- Encabezado del informe -->
+<!-- ENCABEZADO -->
 <div class="encabezado-informe">
+  <div class="encabezado-sub">UTN e-Learning</div>
   <h1>UTN IMPRENTA GRUPO Nº8</h1>
-  <h2>INFORME DE MEDICIONES DE ILUMINACIÓN EN AMBIENTE LABORAL</h2>
+  <h2>INFORME DE MEDICIONES DE ILUMINACIÓN AMBIENTE LABORAL</h2>
   <p>Fecha de emisión: <span id="fechaEmision"></span></p>
 </div>
 
 <div class="form-container">
   <form id="luxForm">
 
-    <!-- 1️⃣ Datos de la empresa -->
+    <!-- 1️⃣ DATOS DE LA EMPRESA -->
+    <div class="seccion-titulo">1️⃣ DATOS DE LA EMPRESA</div>
+    <div class="cuadro">
+      <p><strong>Razón Social:</strong> <span id="empresaRazon"></span></p>
+      <p><strong>Dirección:</strong> <span id="empresaDireccion"></span></p>
+      <p><strong>Localidad:</strong> <span id="empresaLocalidad"></span></p>
+      <p><strong>Provincia:</strong> <span id="empresaProvincia"></span></p>
+      <p><strong>CUIT:</strong> <span id="empresaCUIT"></span></p>
+    </div>
+
+    <!-- Datos de carga de empresa -->
     <fieldset class="fieldset-group">
-      <legend>🏢 Datos de la Empresa</legend>
+      <legend>Completar Datos de la Empresa</legend>
       <div class="horizontal-group">
         <div class="form-group"><label>Razón Social:</label><input type="text" id="razon"></div>
         <div class="form-group"><label>Dirección:</label><input type="text" id="direccion"></div>
@@ -29,9 +40,21 @@
       </div>
     </fieldset>
 
-    <!-- 2️⃣ Datos Técnicos -->
+    <!-- 2️⃣ DATOS TÉCNICOS -->
+    <div class="seccion-titulo">2️⃣ DATOS TÉCNICOS</div>
+    <div class="cuadro">
+      <p><strong>Sector:</strong> <span id="tecnicoSector"></span></p>
+      <p><strong>Tipo de Tarea:</strong> <span id="tecnicoTarea"></span></p>
+      <p><strong>Nivel mínimo Lux requerido:</strong> <span id="tecnicoLuxMin"></span></p>
+      <p><strong>Área (m²):</strong> <span id="tecnicoArea"></span></p>
+      <p><strong>Promedio Lux:</strong> <span id="tecnicoPromedio"></span></p>
+      <p><strong>Resultado:</strong> <span id="tecnicoResultado"></span></p>
+      <p><strong>Observaciones:</strong> <span id="tecnicoObservaciones"></span></p>
+    </div>
+
+    <!-- Datos de carga técnica -->
     <fieldset class="fieldset-group">
-      <legend>🛠️ Datos Técnicos</legend>
+      <legend>Completar Datos Técnicos</legend>
       <div class="horizontal-group">
         <div class="form-group"><label>Nombre del Sector:</label><input type="text" id="sector"></div>
         <div class="form-group">
@@ -61,7 +84,7 @@
       <div class="form-group"><label>Responsable Técnico:</label><input type="text" id="responsable"></div>
     </fieldset>
 
-    <!-- Botones -->
+    <!-- BOTONES -->
     <div class="form-group buttons">
       <button onclick="guardarDatos()" type="button" class="pdf-button">💾 Guardar</button>
       <button onclick="prepararImpresion()" type="button" class="pdf-button">🖰️ Imprimir</button>
@@ -69,23 +92,30 @@
   </form>
 </div>
 
-<div id="mensajeGuardado">✔️ Guardado correctamente</div>
-
-<!-- 2️⃣ Historial de Mediciones -->
+<!-- 3️⃣ HISTORIAL DE MEDICIONES -->
+<div class="seccion-titulo">3️⃣ HISTORIAL DE MEDICIONES</div>
 <div class="historial-container">
-  <h2 class="section-title">📋 Historial de Mediciones</h2>
   <table id="tablaHistorial">
     <thead>
-      <tr><th>Fecha</th><th>Sector</th><th>Tarea</th><th>Promedio</th><th>Resultado</th></tr>
+      <tr>
+        <th>Fecha</th>
+        <th>Sector</th>
+        <th>Tarea</th>
+        <th>Promedio</th>
+        <th>Resultado</th>
+      </tr>
     </thead>
     <tbody></tbody>
   </table>
 </div>
 
-<!-- 3️⃣ Responsable Técnico (zona para impresión) -->
-<div id="responsablePrint"></div>
+<!-- RESPONSABLE AL PIE -->
+<div class="responsable-tecnico-print">
+  <h2>RESPONSABLE TÉCNICO:</h2>
+  <div id="responsableNombrePrint"></div>
+</div>
 
-<!-- Pie de página -->
+<!-- PIE DE PÁGINA -->
 <div class="pie-pagina">
   Informe generado por UTN Imprenta Grupo 8 - Página 1 de 1
 </div>
