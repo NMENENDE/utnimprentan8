@@ -78,10 +78,6 @@ function guardarDatos() {
   historial.push({ fecha, sector, tarea, promedio, cumple: resultado });
   localStorage.setItem('historialLux', JSON.stringify(historial));
   mostrarHistorial();
-
-  const msg = document.getElementById('mensajeGuardado');
-  msg.style.display = 'block';
-  setTimeout(() => msg.style.display = 'none', 2500);
 }
 
 function mostrarHistorial() {
@@ -96,23 +92,34 @@ function mostrarHistorial() {
   });
 }
 
-// ✅ FUNCIÓN FINAL: preparar impresión PRO
 function prepararImpresion() {
-  // Actualizar fecha de emisión
+  // Actualizar fecha
   document.getElementById('fechaEmision').textContent = new Date().toLocaleDateString();
 
-  // Copiar Responsable Técnico a zona de impresión
+  // Actualizar datos empresa
+  document.getElementById('empresaRazon').textContent = document.getElementById('razon').value;
+  document.getElementById('empresaDireccion').textContent = document.getElementById('direccion').value;
+  document.getElementById('empresaLocalidad').textContent = document.getElementById('localidad').value;
+  document.getElementById('empresaProvincia').textContent = document.getElementById('provincia').value;
+  document.getElementById('empresaCUIT').textContent = document.getElementById('cuit').value;
+
+  // Actualizar datos técnicos
+  document.getElementById('tecnicoSector').textContent = document.getElementById('sector').value;
+  document.getElementById('tecnicoTarea').textContent = document.getElementById('tarea').value;
+  document.getElementById('tecnicoLuxMin').textContent = document.getElementById('luxMin').value;
+  document.getElementById('tecnicoArea').textContent = document.getElementById('area').value;
+  document.getElementById('tecnicoPromedio').textContent = document.getElementById('promedio').value;
+  document.getElementById('tecnicoResultado').textContent = document.getElementById('resultadoLux').textContent;
+  document.getElementById('tecnicoObservaciones').textContent = document.getElementById('observaciones').value;
+
+  // Responsable técnico
   const responsableValor = document.getElementById('responsable').value || '(No completado)';
-  document.getElementById('responsablePrint').innerHTML = `
-    <div><strong>Responsable Técnico</strong></div>
-    <div>${responsableValor}</div>
-  `;
+  document.getElementById('responsableNombrePrint').textContent = responsableValor;
 
   // Imprimir
   window.print();
 }
 
-// Al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('tarea').addEventListener('change', setLuxMinimo);
   mostrarHistorial();
