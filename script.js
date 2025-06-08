@@ -19,12 +19,14 @@ function setLuxMinimo() {
 }
 
 function generarCamposMedicion() {
-  const area = parseFloat(document.getElementById('area').value);
+  const areaInput = document.getElementById('area');
+  const area = parseFloat(areaInput.value);
   const contenedor = document.getElementById('medicionesContainer');
   contenedor.innerHTML = '';
 
-  if (!area || area <= 0) {
+  if (isNaN(area) || area <= 0) {
     alert('Por favor ingrese un valor válido para el área (m²).');
+    areaInput.focus();
     return;
   }
 
@@ -163,5 +165,9 @@ function prepararImpresion() {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('tarea').addEventListener('change', setLuxMinimo);
+
+  // OPCIONAL: Si querés que al cambiar el área regenere automáticamente:
+  // document.getElementById('area').addEventListener('change', generarCamposMedicion);
+
   mostrarHistorial();
 });
